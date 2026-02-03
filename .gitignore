@@ -1,0 +1,15 @@
+# Credentials and secrets – NEVER commit
+credentials.json
+.streamlit/secrets.toml
+*.pem
+.env
+.env.local
+
+# Saved files and temp
+archivos_guardados/
+temp_vid.mp4
+*.pyc
+__pycache__/
+.venv/
+venv/
+.DS_Store
