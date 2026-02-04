@@ -1270,8 +1270,13 @@ if st.session_state.step == 1:
                             st.error(f"Error interpreting AI response: {e}")
                             st.code(resp.text, language='json')
                 else:
-                    # Video Logic
-                     with open("temp_vid.mp4", "wb") as f: f.write(uploaded_file.getbuffer())
+                    # Video Logic – configure Gemini API key before upload (upload_file needs it)
+                    api_key = st.secrets.get("GEMINI_API_KEY")
+                    if not api_key:
+                        st.error("GEMINI_API_KEY is not set in Secrets. Add it in Streamlit Cloud → Settings → Secrets.")
+                        st.stop()
+                    genai.configure(api_key=api_key)
+                    with open("temp_vid.mp4", "wb") as f: f.write(uploaded_file.getbuffer())
                      
                      st.info("Uploading video to Gemini...")
                      vid_upload = genai.upload_file("temp_vid.mp4")
