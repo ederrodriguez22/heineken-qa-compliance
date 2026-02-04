@@ -11,6 +11,7 @@ credentials.json
 # Saved files and temp
 archivos_guardados/
 temp_vid.mp4
+f3504bfa0d1ea357bee8b7bb00aa02d9.txt
 *.pyc
 __pycache__/
 .venv/
