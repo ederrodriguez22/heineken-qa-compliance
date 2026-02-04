@@ -1277,27 +1277,23 @@ if st.session_state.step == 1:
                         st.stop()
                     genai.configure(api_key=api_key)
                     with open("temp_vid.mp4", "wb") as f: f.write(uploaded_file.getbuffer())
-                     
-                     st.info("Uploading video to Gemini...")
-                     vid_upload = genai.upload_file("temp_vid.mp4")
-                     
-                     # Poll for processing completion
-                     with st.spinner(f"Processing video... (Initial state: {vid_upload.state.name})"):
-                         while vid_upload.state.name == "PROCESSING":
-                             time.sleep(5)
-                             vid_upload = genai.get_file(vid_upload.name)
-                         
-                     if vid_upload.state.name == "FAILED":
-                         st.error("Video processing failed on Gemini.")
-                         st.stop()
-                         
-                     resp = analyze_content(PROMPT_F2, vid_upload)
-                     print(f"DEBUG: Raw AI Response (Video): {resp.text}")
-                     try:
+                    st.info("Uploading video to Gemini...")
+                    vid_upload = genai.upload_file("temp_vid.mp4")
+                    # Poll for processing completion
+                    with st.spinner(f"Processing video... (Initial state: {vid_upload.state.name})"):
+                        while vid_upload.state.name == "PROCESSING":
+                            time.sleep(5)
+                            vid_upload = genai.get_file(vid_upload.name)
+                    if vid_upload.state.name == "FAILED":
+                        st.error("Video processing failed on Gemini.")
+                        st.stop()
+                    resp = analyze_content(PROMPT_F2, vid_upload)
+                    print(f"DEBUG: Raw AI Response (Video): {resp.text}")
+                    try:
                         st.session_state.analysis_result = clean_json_response(resp.text)
                         next_step()
                         st.rerun()
-                     except Exception as e:
+                    except Exception as e:
                         print(f"DEBUG: Parsing Error: {e}")
                         st.error(f"Error interpreting AI response: {e}")
                         st.code(resp.text, language='json')
