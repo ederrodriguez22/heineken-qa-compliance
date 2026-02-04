@@ -5,6 +5,9 @@ credentials.json
 .env
 .env.local
 
+# PDFs with possible sensitive content (drafts, scripts)
+*.pdf
+
 # Saved files and temp
 archivos_guardados/
 temp_vid.mp4

@@ -17,7 +17,7 @@ Esta solución permite que la cuenta de servicio actúe en nombre de un usuario 
 1. **Habilitar Domain-Wide Delegation en la cuenta de servicio:**
    - Ve a: https://console.cloud.google.com/iam-admin/serviceaccounts
    - Selecciona tu proyecto
-   - Encuentra la cuenta de servicio: `compliance-bot@stellar-depth-382121.iam.gserviceaccount.com`
+   - Encuentra tu cuenta de servicio (el email que usas en `credentials.json` / Google Cloud Console)
    - Haz clic en "Editar"
    - Activa "Habilitar delegación de todo el dominio de Google Workspace"
    - Guarda

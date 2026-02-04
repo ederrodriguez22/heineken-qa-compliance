@@ -385,7 +385,7 @@ def test_drive_connection():
                 if "404" in error_str:
                     results["error_messages"].append(f"❌ Shared Drive with ID '{root_id}' does not exist or the service account is not a member")
                 elif "403" in error_str:
-                    results["error_messages"].append(f"❌ No permission. Ensure the service account is a member of the Shared Drive: compliance-bot@stellar-depth-382121.iam.gserviceaccount.com")
+                    results["error_messages"].append("❌ No permission. Ensure the service account is a member of the Shared Drive (check your service account email in Google Cloud Console).")
                 else:
                     results["error_messages"].append(f"❌ Error accessing Shared Drive: {error_str}")
         else:

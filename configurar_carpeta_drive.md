@@ -8,10 +8,7 @@
 
 ## Paso 2: Compartir con la Cuenta de Servicio
 
-1. En el cuadro de compartir, agrega este email:
-   ```
-   compliance-bot@stellar-depth-382121.iam.gserviceaccount.com
-   ```
+1. En el cuadro de compartir, agrega el email de tu **cuenta de servicio** (lo encuentras en Google Cloud Console → IAM → Service accounts, o en el archivo `credentials.json` como `client_email`).
 2. Dale permisos de **"Editor"** (no solo "Lector")
 3. Haz clic en **"Enviar"** o **"Listo"**
 
